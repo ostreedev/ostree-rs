@@ -3,7 +3,7 @@ image: rust:latest
 before_script:
 - echo deb http://ftp.debian.org/debian stretch-backports main > /etc/apt/sources.list.d/backports.list
 - apt-get update
-- apt-get install -y -t stretch-backports libostree-dev
+- apt-get install -y -t stretch-backports cmake libostree-dev
 
 stages:
 - build
@@ -42,8 +42,9 @@ libostree_nightly:
 docs:
   stage: docs
   script:
+  - make merge-lgpl-docs
   - cd libostree
-  - cargo doc --verbose --features "dox lgpl-docs"
+  - cargo doc --verbose --features dox
   artifacts:
     paths:
     - target/doc
