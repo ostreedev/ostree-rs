@@ -1,5 +1,8 @@
 image: rust:latest
 
+variables:
+  CARGO_TARGET_DIR: target
+
 before_script:
 - echo deb http://ftp.debian.org/debian stretch-backports main > /etc/apt/sources.list.d/backports.list
 - apt-get update
@@ -7,49 +10,56 @@ before_script:
 
 stages:
 - build
-- docs
 - publish
 
+# libostree-sys
 libostree-sys:
   stage: build
   script:
-  - cargo build --verbose --package libostree-sys
-  - cargo test --verbose --package libostree-sys
-
-libostree:
-  stage: build
-  script:
-  - cargo build --verbose --package libostree
-  - cargo test --verbose --package libostree
+  - cargo test --verbose --manifest-path sys/Cargo.toml --all-features
 
 libostree-sys_nightly:
   stage: build
   image: rustlang/rust:nightly
   script:
-  - cargo build --verbose --package libostree-sys
-  - cargo test --verbose --package libostree-sys
+  - cargo test --verbose --manifest-path sys/Cargo.toml --all-features
   allow_failure: true
+
+publish_libostree-sys:
+  stage: publish
+  script:
+  - cargo publish --verbose --manifest-path sys/Cargo.toml --token $CRATES_IO_TOKEN
+  when: manual
+
+# libostree
+libostree:
+  stage: build
+  script:
+  - cargo test --verbose  --all-features
 
 libostree_nightly:
   stage: build
   image: rustlang/rust:nightly
   script:
-  - cargo build --verbose --package libostree
-  - cargo test --verbose --package libostree
+  - cargo test --verbose  --all-features
   allow_failure: true
+
+publish_libostree:
+  stage: publish
+  script:
+  - cargo publish --verbose --token $CRATES_IO_TOKEN
+  when: manual
 
 # docs
 docs:
-  stage: docs
+  stage: build
   script:
   - make merge-lgpl-docs
-  - cd libostree
   - cargo doc --verbose --features dox
   artifacts:
     paths:
     - target/doc
 
-# publish
 pages:
   stage: publish
   script:
@@ -59,17 +69,3 @@ pages:
     - public
   only:
   - master
-
-publish_libostree-sys:
-  stage: publish
-  script:
-  - make pre-package
-  - cargo publish --verbose --manifest-path libostree-sys/Cargo.toml --allow-dirty --token $CRATES_IO_TOKEN
-  when: manual
-
-publish_libostree:
-  stage: publish
-  script:
-  - make pre-package
-  - cargo publish --verbose --manifest-path libostree/Cargo.toml --allow-dirty --token $CRATES_IO_TOKEN
-  when: manual
