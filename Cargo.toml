@@ -4,12 +4,11 @@ version = "0.2.0"
 authors = ["Felix Krull"]
 
 license = "MIT"
-description = "Rust bindings for libostree"
+description = "*DEPRECATED* Please use the 'ostree' crate instead"
 keywords = ["ostree", "libostree"]
 
 documentation = "https://fkrull.gitlab.io/ostree-rs/libostree"
 repository = "https://gitlab.com/fkrull/ostree-rs"
-readme = "README.md"
 
 exclude = [
     "conf/**",

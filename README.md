@@ -3,6 +3,9 @@
 [![Crates.io](https://img.shields.io/crates/v/libostree.svg)](https://crates.io/crates/libostree)
 [![master-docs](https://img.shields.io/badge/docs-master-brightgreen.svg)](https://fkrull.gitlab.io/ostree-rs/libostree)
 
+> **Note**: this crate has been deprecated and renamed to [`ostree`](https://crates.io/crates/ostree).
+> Please use the `ostree` crate instead.
+
 **Rust** bindings for [libostree](https://ostree.readthedocs.io).
 
 libostree is both a shared library and suite of command line tools that combines
