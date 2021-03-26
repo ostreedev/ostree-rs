@@ -52,6 +52,8 @@ v2020_2 = ["v2020_1"]
 v2020_4 = ["v2020_2"]
 dox = []
 v2020_7 = ["v2020_4"]
+v2020_8 = ["v2020_7"]
+v2021_1 = ["v2020_8"]
 
 [lib]
 name = "ostree_sys"
@@ -67,7 +69,7 @@ license = "MIT"
 links = "ostree-1"
 name = "ostree-sys"
 repository = "https://gitlab.com/fkrull/ostree-rs"
-version = "0.7.1"
+version = "0.7.2"
 [package.metadata.docs.rs]
 features = ["dox"]
 [package.metadata.system-deps.ostree_1]
@@ -111,3 +113,5 @@ v2020_1 = "2020.1"
 v2020_2 = "2020.2"
 v2020_4 = "2020.4"
 v2020_7 = "2020.7"
+v2020_8 = "2020.8"
+v2021_1 = "2021.1"
