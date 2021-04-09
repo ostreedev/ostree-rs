@@ -54,7 +54,11 @@ Cargo commands.
 
 ### Generated code
 Most code is generated based on the gir files using the
-[gir](https://github.com/gtk-rs/gir) tool. These parts can be regenerated using
+[gir](https://github.com/gtk-rs/gir) tool. 
+
+One path is to have 
+
+These parts can be regenerated using
 the included Makefile:
 
 ```ShellSession
