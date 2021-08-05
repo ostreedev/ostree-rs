@@ -1,5 +1,4 @@
 use ostree::prelude::*;
-use ostree::{gio, glib};
 
 #[test]
 fn sign_api_should_work() {

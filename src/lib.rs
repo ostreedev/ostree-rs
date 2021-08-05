@@ -73,8 +73,10 @@ mod tests;
 pub mod prelude {
     pub use crate::auto::traits::*;
     // See "Re-export dependencies above".
+    pub use gio;
     #[doc(hidden)]
     pub use gio::prelude::*;
+    pub use glib;
     #[doc(hidden)]
     pub use glib::prelude::*;
 }

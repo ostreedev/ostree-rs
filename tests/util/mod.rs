@@ -1,6 +1,6 @@
 use gio::NONE_CANCELLABLE;
-use glib::prelude::*;
 use glib::GString;
+use ostree::prelude::*;
 use std::path::Path;
 
 #[derive(Debug)]
