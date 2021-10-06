@@ -29,7 +29,7 @@ members = [".", "sys"]
 
 [dependencies]
 bitflags = "1.2.1"
-ffi = { package = "ostree-sys", path = "sys", version = "0.9" }
+ffi = { package = "ostree-sys", path = "sys", version = "0.9.1" }
 gio = "0.14"
 glib = "0.14.4"
 hex = "0.4.2"
@@ -86,3 +86,4 @@ v2021_1 = ["v2020_8", "ffi/v2021_1"]
 v2021_2 = ["v2021_1", "ffi/v2021_2"]
 v2021_3 = ["v2021_2", "ffi/v2021_3"]
 v2021_4 = ["v2021_3", "ffi/v2021_4"]
+v2021_5 = ["v2021_4", "ffi/v2021_5"]
