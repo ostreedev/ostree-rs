@@ -1,7 +1,0 @@
-.idea
-target
-cargo
-sccache
-**/*.rs.bk
-Cargo.lock
-.vagrant
